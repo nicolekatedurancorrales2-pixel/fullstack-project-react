@@ -6,6 +6,7 @@ import TaskList from "./components/TaskList";
 import TaskButton from "./components/TaskButton";
 import { Plus } from "lucide-react";
 
+
 type Tarea = {
   id: number;
   text: string;
@@ -13,6 +14,7 @@ type Tarea = {
 };
 
 function App() {
+  
   const [texto, setTexto] = useState("");
   /*const [tasks, setTasks] = useState<Tarea[]>([]);*/
 
