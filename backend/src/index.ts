@@ -47,7 +47,17 @@ app.get("/tasks", async (req: any, res: any) => {
     res.json(tasks);
   }catch(error){
     console.error("Error en GET/tasks:", error);
-    res.status(500).json({message: "Error al obtener tareas"});
+   if (error instanceof Error) {
+    res.status(500).json({
+      message: "Error al obtener tareas",
+      error: error.message,
+    });
+  } else {
+    res.status(500).json({
+      message: "Error al obtener tareas",
+      error: "Error desconocido",
+    });
+  }
   }
 });
 

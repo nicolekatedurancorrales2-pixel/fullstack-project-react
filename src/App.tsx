@@ -24,7 +24,17 @@ useEffect(()=> {
   fetch("http://localhost:3000/tasks")
   .then((response) => response.json())
   .then((data) => {
-    setTasks(data);
+    //setTasks(data);
+    // Validar que sea array
+    console.log("DATA QUE VIENE DEL BACKEND:", data);
+    console.log("TIPO:", typeof data);
+    console.log("ES ARRAY:", Array.isArray(data));
+    if (Array.isArray(data)) {
+        setTasks(data);
+    } else {
+        console.error("La API no devolvió un array:", data);
+        setTasks([]);
+    }
   })
   .catch((error)=> {
     console.log("Error al obtener tasks:", error);
