@@ -20,7 +20,8 @@ body {
 
 .app {
   display: flex;
-  flex-direction: column;
+  justify-content: center;   /* horizontal */
+  align-items: center;       /* vertical */
   min-height: 100vh;
 }
 
@@ -195,4 +196,34 @@ li:hover {
 
 span{
   white-space: nowrap;
+}
+
+/* ===== STATS MODERNOS ===== */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: bold;
+  color: #6f4518;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #555;
 }

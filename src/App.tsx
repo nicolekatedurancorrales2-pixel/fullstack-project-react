@@ -38,7 +38,7 @@ function App() {
       alert("La tarea no puede estar vacía");
       return; // ⛔ corta la ejecución
     };
-    
+
     const newTask ={
       id: Date.now(),
       text: taskText,
@@ -127,11 +127,22 @@ function App() {
           onToggle={toggleCompletar}
         />
 
-        <p>
-          Tareas Completadas: {completadas} 
-          Tareas Pendientes: {tasks.length - completadas} 
-          Total tareas: {tasks.length}
-        </p>
+        <div className="stats">
+          <div className="stat">
+            <span className="stat-number">{completadas}</span>
+            <span className="stat-label">Completadas</span>
+          </div>
+
+          <div className="stat">
+            <span className="stat-number">{tasks.length - completadas}</span>
+            <span className="stat-label">Pendientes</span>
+          </div>
+
+          <div className="stat">
+            <span className="stat-number">{tasks.length}</span>
+            <span className="stat-label">Total</span>
+          </div>
+        </div>
       </div>
     </div>
   );
