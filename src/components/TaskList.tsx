@@ -1,21 +1,21 @@
 import TaskCard from "./TaskCard";
 
-type Tarea = {
+type Task = {
   id: number;
   text: string;
   completed: boolean;
 };
 
 type Props = {
-  tareas: Tarea[];
+  tasks: Task[];
   onEliminar: (id: number) => void;
   onToggle: (id: number) => void;
 };
 
-function TaskList({ tareas, onEliminar, onToggle }: Props) {
+function TaskList({ tasks, onEliminar, onToggle }: Props) {
   return (
     <ul>
-      {tareas.map((t) => (
+      {tasks.map((t) => (
         <TaskCard
           key={t.id}
           text={t.text}

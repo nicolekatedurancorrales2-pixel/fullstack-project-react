@@ -28,7 +28,7 @@ body {
   background: white;
   padding: 20px;
   border-radius: 12px;
-  width: 1300px;
+  width: 1000px;
   margin: 200px auto; 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -36,6 +36,10 @@ body {
 
 h1 {
   margin-bottom: 15px;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600; 
+  /* font-style:italic; */
 }
 
 /* ===== INPUT ===== */
@@ -46,6 +50,8 @@ input {
   border-radius: 8px;
   outline: none;
   margin-right: 15px;
+  margin-bottom: 17px;
+  margin-top: 15px;
 }
 
 /* ===== BOTÓN ===== */
