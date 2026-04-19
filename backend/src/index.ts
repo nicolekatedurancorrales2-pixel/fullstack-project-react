@@ -3,10 +3,13 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const jwt = require('jsonwebtoken');
 
 //importamos prisma client
 const {PrismaClient}= require("@prisma/client");
 const {PrismaPg} = require("@prisma/adapter-pg");
+const SECRET_KEY = "12345";
+
 
 //creamos adaptador usando la URL de conexion
 //es la conexion real a postgresql
@@ -97,6 +100,49 @@ app.delete("/tasks/:id", async (req: any, res: any) => {
     console.error("Error en DELETE/tasks/:id:", error);
     res.status(500).json({message: "Error al eliminar tarea"});
   }
+});
+
+//POST LOGIN
+app.post("/login", (req: any, res: any) => {
+  const { email, password } = req.body;
+
+  // Credenciales de prueba
+  if (email === "admin" && password === "12345") {
+    const token = jwt.sign(
+      { user: email },
+      "secret_key",
+      { expiresIn: "1h" }
+    );
+
+    return res.json({ token });
+  }
+
+  res.status(401).json({ error: "Credenciales inválidas" });
+});
+
+//MIDDLEWARE VERIFY TOKEN
+const verifyToken = (req: any, res: any, next: any) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader) {
+    return res.status(401).json({ error: "No autorizado" });
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  try {
+    const decoded = jwt.verify(token, "secret_key");
+    req.user = decoded;
+    console.log('req.user',req.user)
+    next();
+  } catch (err) {
+    return res.status(401).json({ error: "Token inválido" });
+  }
+};
+
+//RUTA PROTEGIDA
+app.get("/private", verifyToken, (req: any, res: any) => {
+ res.json({ message: "Acceso permitido" });
 });
 
 app.listen(PORT, () => {
