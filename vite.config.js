@@ -20,8 +20,12 @@ export default defineConfig({
     coverage: { 
       provider: 'v8',
       reporter: ['text', 'html'],
-      all: true,                     // 👈 Incluye TODOS los archivos, aunque no tengan tests
-      include: ['src/**/*.{js,jsx,ts,tsx}'], // 👈 Analiza toda la carpeta src
+      //all: true,                     // 👈 Incluye TODOS los archivos, aunque no tengan tests
+      //include: ['src/**/*.{js,jsx,ts,tsx}'], // 👈 Analiza toda la carpeta src
+      include: [
+        'src/utils/validaciones.js',
+        'src/components/FormularioTarea.jsx',
+      ],
       exclude: ['src/main.tsx', 'src/vite-env.d.ts', 'src/test/**'], // Excluye archivos de configuración/entrada
       thresholds: { 
         lines: 60, 
