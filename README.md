@@ -18,7 +18,7 @@ npm run dev
 
 ### Variables de entorno
 
-Crea un archivo `.env` en la raíz con las siguientes claves (sin valores reales en este documento):
+Crea un archivo `.env` en la raíz con las siguientes claves:
 
 La variable VITE_API_URL se configura para tener una conexión con el backend desplegado en la nube,
 es decir el valor que se configura en esta variable es la url del backend en la nube.q
