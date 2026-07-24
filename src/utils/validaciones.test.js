@@ -31,7 +31,7 @@ describe('contarTareasPendientes', () => {
   it('devuelve 0 cuando la lista está vacía', () => {
     expect(contarTareasPendientes([])).toBe(0)
   })
-
+  //nueva prueba
   it('devuelve 0 cuando la lista de tareas es undefined', () => {
     expect(contarTareasPendientes(undefined)).toBe(0)
   })
